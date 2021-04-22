@@ -6,7 +6,7 @@ root = Tk()
 #Creating a Label Widget
 MyLabel = Label(root, text = "Hello World")
 
-#Pack = Straight up showing content as big as it is onto the screen
+#Pack = Straight up shows the content as big as it is onto the screen
 MyLabel.pack()
 
 #Tkinter loop func
