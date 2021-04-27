@@ -33,9 +33,6 @@ my_label.pack()
 
 
 
-
-
-
 #root.quit() is a function which stops the program. Putting it into the button command will execute its function when the button is clicked
 QuitButton = Button(root, text = "Exit Program", command = root.quit)
 QuitButton.pack()
