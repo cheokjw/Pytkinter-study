@@ -5,7 +5,7 @@ root.title("Dropdown box")
 root.geometry("400x400")
 
 
-#Button functions 
+# Button functions 
 def show(var):
     my_lbl = Label(root, text = clicked.get())
     my_lbl.pack()
@@ -16,7 +16,7 @@ def show_day():
 
 
 
-#We can create dropdown options by typing it manually or using a list
+# We can create dropdown options by typing it manually or using a list
 options = [
     "Sunday",
     "Monday",
@@ -29,9 +29,9 @@ options = [
 
 
 clicked = StringVar()
-#This is used when the options are typed in manually
-#clicked.set("Monday")
-#The index method is used when the options are created in a list
+# This is used when the options are typed in manually
+# clicked.set("Monday")
+# The index method is used when the options are created in a list
 clicked.set(options[0])
 
 
@@ -41,7 +41,7 @@ drop = OptionMenu(root, clicked,"Sunday", "Monday", "Tuesday", "Wednesday", "Thu
 drop.pack()
 """
 
-#Method 2 = Using a list, remember to put * before options
+# Method 2 = Using a list, remember to put * before options
 drop = OptionMenu(root, clicked, *options, command = show)
 drop.pack()
 
