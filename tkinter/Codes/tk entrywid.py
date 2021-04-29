@@ -3,6 +3,7 @@ from tkinter import *
 #initializing Tk class OOP(Object-Oriented Programming)
 root = Tk()
 
+
 #Entry(root) = shows an input field which allows users to enter data
 #We can change its colour and size or features of the input field as the button eg: fg, bg, width, etc
 #.insert(index value, text) = giving a default text/ value into the input field
