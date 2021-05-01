@@ -3,7 +3,7 @@ import sqlite3
 
 root = Tk()
 root.title("Database")
-root.geometry("400x400")
+root.geometry("400x600")
 
 # Databases
 
@@ -41,6 +41,7 @@ Cursor.execute("""CREATE TABLE addresses (
 
 # Submit info into the database when the button is pressed.
 def submit():
+        
         # Create a database or connect to one
         Connect = sqlite3.connect("address_book.db")
 
@@ -77,6 +78,7 @@ def submit():
 
 
 def Query():
+
         # Connect to database
         Connect = sqlite3.connect("address_book.db")
 
@@ -98,16 +100,44 @@ def Query():
         # Loop through result and make them into a list, then label it and present on GUI
         for record in records:
                 # Since the record is a tuple now, we can access its item by doing record[0] <-- This returns the oid of the record
-                print_records += f"{record[1]}\n"
+                print_records += f"{record[1]}\t {record[0]}\n"
 
-        query_lbl = Label(root, text = print_records)
-        query_lbl.grid(row = 8, column = 0, columnspan = 2)
+        if print_records == "[]":
+                query_lbl = Label(root, text = "No records")
+                query_lbl.grid(row = 10, column = 0, columnspan = 2)
+        
+        else:
+                query_lbl = Label(root, text = print_records)
+                query_lbl.grid(row = 10, column = 0, columnspan = 2)
 
         # Commit execution
         Connect.commit()
 
         # Close connection
         Connect.close()
+
+# Create a function to delete a record
+def delete():
+
+        # Connect to the datbase
+        Connect = sqlite3.connect("address_book.db")
+
+        # Create cursor
+        Cursor = Connect.cursor()
+
+        Cursor.execute(f"""
+                DELETE FROM [addresses]
+                WHERE [oid] = {Oid_del.get()}
+        
+        """)
+
+        # Commit changes
+        Connect.commit()
+
+        # Close connections
+        Connect.close()
+
+        Oid_del.delete(0, END)
 
 
 
@@ -151,9 +181,21 @@ zipcode_lbl.grid(row = 5, column = 0, padx = 10, sticky = "E")
 Submit_btn = Button(root, text = "Submit", command = submit)
 Submit_btn.grid(row = 6, column = 0, columnspan = 2, pady = 10, ipadx = 145)
 
-#Create Query button
+# Create Query button
 Query_button = Button(root, text = "Show records", command = Query)
 Query_button.grid(row = 7, column = 0, columnspan = 2, pady = 10, ipadx = 130)
+
+# Create delete button
+Delete_button = Button(root, text = "Delete", command = delete)
+Delete_button.grid(row = 9, column = 0, columnspan = 2, pady = 10, ipadx = 145)
+
+# Create and place Entry widget and label
+del_lbl = Label(root, text = "Record Delete : ")
+Oid_del = Entry(root, width = 30)
+del_lbl.grid(row = 8, column = 0, padx = 10, sticky = "E")
+Oid_del.grid(row = 8, column = 1, padx = 20, pady = 20, ipadx = 30)
+
+
 
 # Commit changes
 Connect.commit()
