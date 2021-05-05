@@ -7,7 +7,7 @@ root = Tk()
 root.title("Simple Calculator")
 #Shows the icon at the top left corner of the GUI
 #.iconbitmap() only supports .ico type of images. Other type will not work
-root.iconbitmap("C:/Users/cheok/OneDrive/Desktop/py projects/tkinter/images/calculator-2465656-2042102.ico")
+root.iconbitmap("C:/Users/cheok/OneDrive/Documents/GitHub/pytkinter-study/tkinter/images/calculator-2465656-2042102.ico")
 root.configure(bg = "black")
 
 
@@ -161,7 +161,7 @@ def Clear():
     entryWid.delete(0, END)
 
 
-Image_1 = ImageTk.PhotoImage(Image.open("C:/Users/cheok/OneDrive/Desktop/py projects/tkinter/images/no 1.png").resize((80, 50), Image.ANTIALIAS))
+#Image_1 = ImageTk.PhotoImage(Image.open("C:/Users/cheok/OneDrive/Desktop/py projects/tkinter/images/no 1.png").resize((80, 50), Image.ANTIALIAS))
 
 
 #Define buttons from 1 - 0
